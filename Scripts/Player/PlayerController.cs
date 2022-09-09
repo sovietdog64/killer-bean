@@ -36,9 +36,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(movement.normalized * speed * Time.deltaTime); // Moves the player
 
         if (Input.GetButtonDown("Jump") && grounded) // Player jumps when on ground and jump button pressed
-        {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        }
     }
 
     private void FixedUpdate()
