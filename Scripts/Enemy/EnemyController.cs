@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Variables
     [SerializeField] float minSpeed = .1f;
     [SerializeField] float maxSpeed = 1f;
     [SerializeField] float zoneRadius = 55f;
@@ -12,14 +11,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float changeTime = 2f;
     [SerializeField] float gravity = -19.64f;
     [SerializeField] AudioClip death;
-    private bool move = true;
-    private bool playerInZone = false;
-    private float vertical;
+    private bool move = true; // true when player starts moving
+    private bool playerInZone = false; // checks whether player is in enemy chase zone
+    private float vertical; //
     private float horizontal;
     private float timer;
-    private bool grounded;
-    private float radius = .2f;
-    private Vector3 velocity = Vector3.zero;
+    private bool grounded; // true when player touches ground
+    private float radius = .2f; // radius of ground trigger
+    private Vector3 velocity = Vector3.zero; // 
     private LayerMask groundMask;
     private CharacterController controller;
     private AudioSource audioSource;
@@ -30,13 +29,11 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Assigns component to variables
         controller = GetComponent<CharacterController>();
         audioSource = GetComponent<AudioSource>();
         material = GetComponent<Renderer>().material;
         target = GameObject.Find("Player").GetComponent<Transform>();
 
-        // Assigns value to variables
         timer = changeTime;
         vertical = Random.Range(-1, 2);
         horizontal = Random.Range(-1, 2);
