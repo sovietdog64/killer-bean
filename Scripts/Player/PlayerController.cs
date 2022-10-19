@@ -16,12 +16,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get components
+        // Gets gameObject's components on start
         controller = GetComponent<CharacterController>();
         groundCheck = GameObject.Find("GroundCheck").GetComponent<Transform>();
         groundMask = LayerMask.GetMask("Ground");
-
-        /* **CLEAN UP THE CODE IN THE SCRIPTS AND ADD COMMENTS!!!** */
     }
 
     // Update is called once per frame
@@ -36,7 +34,9 @@ public class PlayerController : MonoBehaviour
         controller.Move(movement.normalized * speed * Time.deltaTime); // Moves the player
 
         if (Input.GetButtonDown("Jump") && grounded) // Player jumps when on ground and jump button pressed
+        {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
     }
 
     private void FixedUpdate()
@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime); // Moves the player by current velocity
 
         if (grounded && velocity.y <= 0) // Resets velocity when the player is on the ground
+        {
             velocity.y = -2f;
+        }
     }
 }
