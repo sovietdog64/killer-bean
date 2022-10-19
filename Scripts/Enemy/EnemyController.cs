@@ -9,12 +9,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float zoneRadius = 55f;
     [SerializeField] float damage = 10f;
     [SerializeField] float changeTime = 2f;
-    [SerializeField] float gravity = -19.64f;
+    [SerializeField] float gravity = -19.64f; // 
     [SerializeField] AudioClip death;
     private bool move = true; // true when player starts moving
     private bool playerInZone = false; // checks whether player is in enemy chase zone
-    private float vertical; //
-    private float horizontal;
+    private float vertical; // horizontal movement
+    private float horizontal; // vertical movement
     private float timer;
     private bool grounded; // true when player touches ground
     private float radius = .2f; // radius of ground trigger
@@ -73,13 +73,16 @@ public class EnemyController : MonoBehaviour
         foreach (Transform tr in transform)
             groundCheck = tr;
 
-        grounded = Physics.CheckSphere(groundCheck.position, radius, groundMask);
+        grounded = Physics.CheckSphere(groundCheck.position, radius, groundMask); // checks whether the player is touching the ground
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
         if (grounded && velocity.y <= 0)
+        {
             velocity.y = -2f;
+        }
+        
     }
 
     void SwitchDirection()
