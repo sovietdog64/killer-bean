@@ -90,7 +90,6 @@ public class EnemyController : MonoBehaviour
         if (timer <= 0 && !playerInZone)
         {
             // Change's enemy's direction
-
             vertical = Random.Range(-1, 2);
             horizontal = Random.Range(-1, 2);
 
